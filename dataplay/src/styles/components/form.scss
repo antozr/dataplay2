@@ -1,0 +1,22 @@
+.formulaire{
+
+    .formulaire__title, .formulaire__subtitle{
+        text-align: center;
+        color: white;
+    }
+    .formulaire__item{
+        width:90%;
+        margin: 10px;
+        margin-left: 5%;
+        height: 35px;
+        font-size: 18px;
+        &:not(:last-child){
+            background: rgba(196, 196, 196, 0.2);
+            border: solid 0.5px white;  
+            }
+
+        option{
+            color: black;
+        }
+    }
+}
