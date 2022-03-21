@@ -25,6 +25,22 @@ function activate() {
   }
 
 
+//// gestion du burger menu 
+
+let btnMenu = document.querySelector('.head__btn');
+let navMenuList = document.querySelector('.head__nav');
+
+btnMenu.addEventListener('click', ()=>{
+
+    if(navMenuList.classList.contains('head__nav--none')){
+        navMenuList.classList.remove('head__nav--none');
+        btnMenu.classList.add('head__btn--actif');
+    }else{
+        navMenuList.classList.add('head__nav--none');
+        btnMenu.classList.remove('head__btn--actif');
+    }
+});
+
 
 
 
@@ -66,10 +82,29 @@ imgPubLink.addEventListener('click', ()=>{
 
 
 //// ouverture card info
-
+let i = 0;
 var cardList = document.querySelectorAll('.sect__el');
 cardList.forEach(el => {
     let tabNameCard = ["Flash", "Utilisateur Tablette", "Consomateur", "Consomation", "Sexe(Oral/Anal)"];
+    let tabCatForm = ['temps', 'devices', 'age','categorie','sexe'];
+    let varControle = el.firstElementChild.children[0].children[0].children[0];
+    let indexNum = tabNameCard.indexOf(varControle.children[0].innerText);
+
+    if(el.classList.contains('sect__el--small')){
+        i=8;
+    }else{
+        phraseVignetteRecord(varControle, tabNameCard[indexNum], el);
+        el.firstElementChild.children[0].children[0].children[0].children[1].innerText= localStorage.getItem(tabCatForm[i]); 
+        if( i === 5){
+            i = 0;
+        }else if(i ===0){
+            el.firstElementChild.children[0].children[0].children[0].children[1].innerText= localStorage.getItem(tabCatForm[i])+'min';  
+            i++
+        }else{
+           
+            i++
+        }
+    }
 
     el.addEventListener('click', () => {
         let varControle = el.firstElementChild.children[0].children[0].children[0];
@@ -77,22 +112,22 @@ cardList.forEach(el => {
         console.log(varControle.children[0].innerText);
 
         let indexNum = tabNameCard.indexOf(varControle.children[0].innerText);
-        phraseVignetteRecord(varControle, tabNameCard[indexNum]);
+        phraseVignetteRecord(varControle, tabNameCard[indexNum], el);
 
     });
 });
 
-function phraseVignetteRecord(varControle, nomCarte) {
+function phraseVignetteRecord(varControle, nomCarte, el) {
 
     if (varControle.children[0].innerText === nomCarte) {
         console.log('yess');
-        let valueSport = varControle.children[1].innerText;
+        let valueSport = localStorage.getItem('temps');
         // check valeur + fonction spécial 
         if (nomCarte === "Flash") {
             let valueSport2 = valueSport.slice(0, 2);
             console.log(valueSport2);
             if (valueSport2 < 10) {
-                varControle.children[2].innerText = " Tu es présser  ";
+                varControle.children[2].innerText = "Tu es présser mon petit";
             } else {
                 varControle.children[2].innerText = " Tu es un gros sportif";
                 console.log('gros boulet au cheville');
@@ -108,7 +143,16 @@ function phraseVignetteRecord(varControle, nomCarte) {
             console.log('HA');
         }
          if(nomCarte === "Sexe(Oral/Anal)"){
-            console.log('first');
+            let valueSexe = localStorage.getItem('sexe');
+            console.log(valueSexe);
+            
+            if (valueSexe == "femme") {
+                varControle.children[2].innerText = "Chaude comme une baraque à frite";
+                
+            } else if(valueSexe == 'homme'){
+                varControle.children[2].innerText = " La poutre en vue";
+                el.firstElementChild.children[0].children[0].children[1].children[0].src='assets/images/poutre.png'
+            }
         }
     }
 
