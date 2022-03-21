@@ -31,6 +31,7 @@ function activate() {
 
 /// gestion des pubs + auteurs 
 const tabAllPub = ["assets/images/Frame 2.png", "assets/images/pub2.png", "assets/images/pub3.png", "assets/images/pub4.png"];
+const tabDocumentaire = ["https://www.youtube.com/watch?v=hQZN1nSPL5k", "https://www.youtube.com/watch?v=IcwAMLcliIY", "https://www.youtube.com/watch?v=vR1jra31dkk"]
 const tabAllCreator = ["Mathis", "Jean", "Bastien", "Anto"];
 var imgPub = document.querySelector('.main__pubImg');
 var pubCreator = document.querySelector('.main__pubTxt');
@@ -58,7 +59,7 @@ btnPubClose.addEventListener('click', ()=>{
 
 
 imgPubLink.addEventListener('click', ()=>{
-    window.open("https://www.youtube.com/watch?v=IcwAMLcliIY", '_blank')
+    window.open( tabDocumentaire[Random(0,3)], '_blank')
     //window.location.href="https://www.youtube.com/watch?v=IcwAMLcliIY";
 });
 
