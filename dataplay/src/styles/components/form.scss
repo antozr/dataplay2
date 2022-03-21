@@ -8,15 +8,27 @@
         width:90%;
         margin: 10px;
         margin-left: 5%;
-        height: 35px;
         font-size: 18px;
         &:not(:last-child){
             background: rgba(196, 196, 196, 0.2);
-            border: solid 0.5px white;  
+            border: solid 0.5px white;
+            height: 35px;  
             }
 
         option{
             color: black;
         }
     }
+}
+
+.submit{
+    background-color: #FF9900;
+    margin-top: 35px;
+    width: 250px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    border-radius: 25px;
+    font-size: 25px;
+    padding: 10px 20px;
+    border: none;
 }
