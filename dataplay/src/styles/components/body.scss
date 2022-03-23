@@ -135,14 +135,22 @@
         width: 100%;
         height: 217px;
         padding: 42px 0;
+        transition: 0.3s;
         &--hori{
             width: 340px;
+        }
+        &--open1{
+            height: 400px;
+            transition: 0.3s;
         }
     }
     &__listCard{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        &--none{
+            display: none;
+        }
 
         &>li>p:nth-child(1){
             text-transform: capitalize;
