@@ -21,9 +21,9 @@
         <input class="formulaire__name formulaire__item" placeholder="Nom/Pseudo" type="text" id="name" autocomplete="off" name="name" required axlength="12" size="10">
         <select class="formulaire__age formulaire__item" name="age">
             <option value="" disabled selected>Age</option>
-            <option value="genz">18-24</option>
-            <option value="geny">24-34</option>
-            <option value="genx">34-54</option>
+            <option value="genZ">18-24</option>
+            <option value="genY">24-34</option>
+            <option value="genX">34-54</option>
             <option value="boomer">55+</option>
         </select>   
         <select class="formulaire__catégories formulaire__item" name="categories">
@@ -47,22 +47,32 @@
             <option value="Fille solo">Fille solo</option>
             <option value="Pipi">Pipi</option>
             <option value="Enceinte">Enceinte</option>
+            <option value="Rien">Mais vous êtes malade?!</option>
         </select>
         <input placeholder="Temps par session (en minutes)" class="formulaire__temps formulaire__item" id="temps" type="number" name="temps">
-        <form action="">
-            <div class="formulaire__sexe formulaire__item">
-                <p>Sexe</p>
-                <input type="radio" id="sexe"
-                name="sexe" value="homme">
-                <label for="homme">Homme</label>
-            
-                <input type="radio" id="sexe"
-                name="sexe" value="femme">
-                <label for="femme">Femme</label>
-            </div>
-        </form>       
+         <select class="formulaire__age formulaire__item" name="age">
+            <option value="" disabled selected>Device</option>
+            <option value="tablette">tablette</option>
+            <option value="PC">PC</option>
+            <option value="téléphone">téléphone</option>
+            <option value="aucun">Rien je suis pas drôle</option>
+        </select>  
+        <div class="formulaire__sexe formulaire__item">
+            <p>Sexe</p>
+            <input type="radio" class="sex" id="homme"
+             name="sexe" value="homme">
+            <label for="homme">Homme</label>
+        
+            <input type="radio" id="femme" class="sex"
+             name="sexe" value="femme">
+             <label for="femme">Femme</label>
+          
+             <input type="radio" id="helico" class="sex"
+             name="sexe" value="femme">
+             <label for="helico">Hélicoptère d'attaque</label>
+        </div>
     </form>
-    <button class="submit">Laisser ma trace</button>
+    <a href="stat.html" class="submit">Laisser ma trace</a>
 
 </body>
 </html>

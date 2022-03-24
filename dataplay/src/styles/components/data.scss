@@ -12,6 +12,7 @@
             //width: 100%;
             height: 100%;
             transition: 0.6s;
+            position: relative;
         }
     }
 
@@ -28,7 +29,8 @@
         justify-content: center;
         position: relative;
         transition: 0.3s;
-        
+        animation: openBoobiesBounce 2s infinite ;
+        animation-iteration-count: 2;
 
         &::after{
             width: 48px;
@@ -47,9 +49,112 @@
             height: 140px;
             width: 140px;
             top: 20px;
-
+            animation-delay: 0.4s;
             &::after{
                 animation: openBoobiesReverse 2s infinite ;
+            }
+        }
+        &--checkBox{
+            background-color: #ffefda;
+            outline: 20px solid #ffefda66;
+
+            &::after{
+                background-color: #ffefda;
+            }
+            &>p>span{
+                color: #000;
+            }
+        }
+        &--cat{
+            width: 181px;
+            height: 181px;
+            top: 180px;
+            left: 38%;
+            z-index: 10;
+            &:nth-child(2){
+                width: 162px;
+                height: 162px;
+                top: -210px;
+                left: 24%;
+                z-index: 9;
+                
+            }
+            &:nth-child(3){
+                width: 142px;
+                height: 142px;
+                top: -84px;
+                left: -58%;
+                z-index: 8;
+                &::after{
+                    width: 32px;
+                    height: 32px;
+            }
+
+            }
+            &:nth-child(4){
+                width: 122px;
+                height: 122px;
+                font-size: 18px;
+                top: -74px;
+                left: 22%;
+                z-index: 8;
+                &::after{
+                    width: 32px;
+                    height: 32px;
+            }
+
+            }
+            &:nth-child(5){
+                width: 102px;
+                height: 102px;
+                font-size: 18px;
+                top: -66px;
+                left: 24%;
+                z-index: 8;
+                &::after{
+                    width: 32px;
+                    height: 32px;
+            }
+
+            }
+            &:nth-child(6){
+                width: 82px;
+                height: 82px;
+                font-size: 18px;
+                top: 40px;
+                left: -20%;
+                z-index: 8;
+                &::after{
+                    width: 32px;
+                    height: 32px;
+            }
+
+            }
+        }
+        &--age{
+            width: 181px;
+            height: 181px;
+            top: 60px;
+            left: 2%;
+            z-index: 10;
+
+            &:nth-child(2){
+                top: -80px;
+                left: 62%;
+                width: 151px;
+                height: 151px;
+            }
+            &:nth-child(3){
+                top: -60px;
+                // left: 62%;
+                width: 201px;
+                height: 201px;
+            }
+            &:nth-child(4){
+                top: -195px;
+                left: 68%;
+                width: 131px;
+                height: 131px;
             }
         }
 
@@ -80,6 +185,10 @@
                 color: #F7971D;
             }
         }
+        &--small{
+            top: 0;
+            left: -7px;
+        }
     }
     &__dataSpan{
             height: 28px;
@@ -91,7 +200,9 @@
         }
     }
     &__txtEl{
-        
+        &--up{
+            margin: -110px 0 0 0;
+        }
     }
 
 }
@@ -152,6 +263,21 @@
     }
     100%{
         opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes openBoobiesBounce   {
+
+    0%{
+        transform: translateY(0px);
+    }
+    40%{
+        transform: translateY(-6px);
+    }
+    80%{
+        transform: translateY(2px);
+    }
+    100%{
         transform: translateY(0px);
     }
 }

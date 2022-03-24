@@ -16,7 +16,7 @@
     <script src="scripts/main.js" defer></script>
 </head>
 
-<body>
+<body>  
     <header class="head">
         <div class="head__main">
             <button class="head__btn ">
@@ -145,7 +145,7 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · Temps moyen : 10min10
                                 </p>
                             </div>
@@ -188,14 +188,14 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · Devices: pc 69%
                                 </p>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="sect__el">
+                <li class="sect__el" id="listAge">
                     <div class="sect__card">
                         <div class="sect__cardScreen">
                             <ul class="sect__listCard">
@@ -212,6 +212,33 @@
                                 </li>
                                 <li class="sect__CardEl">
                                     <img src="assets/images/conso.png" alt="tu es sprotif" class="sect__cardImg">
+                                </li>
+                            </ul>
+                            <ul class="card__dataList">
+                                <li class="card__dataEl card__dataEl--age">
+                                    <p class="card__dataTxt" >
+                                        GenZ<span id="ageZ" class="card__dataSpan"> 25%</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--age">
+                                    <p class="card__dataTxt" >
+                                        GenY <span id="ageY" class="card__dataSpan card__dataSpan--second "> 26%</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--age">
+                                    <p class="card__dataTxt" >
+                                        GenX <span id="ageX" class="card__dataSpan card__dataSpan--second "> 33%</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--age">
+                                    <p class="card__dataTxt" >
+                                        Boomers <span id="boom" class="card__dataSpan card__dataSpan--second "> 16%</span>
+                                    </p>
+                                </li>
+                                <li class="card__txtEl card__txtEl--up">
+                                    <p class="card__dataTxt card__dataTxt--white">
+                                        Tu es comme&nbsp;<span id="numAgePourcentage">10</span> des utilisateurs 😏
+                                    </p>
                                 </li>
                             </ul>
                         </div>
@@ -231,14 +258,14 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · Age moyen: 38
                                 </p>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="sect__el">
+                <li class="sect__el " id="listCat">
                     <div class="sect__card">
                         <div class="sect__cardScreen">
                             <ul class="sect__listCard">
@@ -255,6 +282,44 @@
                                 </li>
                                 <li class="sect__CardEl">
                                     <img src="assets/images/cat.png" alt="tu es sprotif" class="sect__cardImg">
+                                </li>
+                            </ul>
+
+                            <ul class="card__dataList" >
+                                <li class="card__dataEl card__dataEl--cat">
+                                    <p class="card__dataTxt" >
+                                        Japonaise <span id="cat1" class="card__dataSpan"> 1 👑</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl  card__dataEl--cat">
+                                    <p class="card__dataTxt" >
+                                        Lesbienne <span id="cat2" class="card__dataSpan card__dataSpan--second "> 2</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--cat">
+                                    <p class="card__dataTxt" >
+                                        Ebony <span id="cat3" class="card__dataSpan"> 3</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl  card__dataEl--cat">
+                                    <p class="card__dataTxt card__dataTxt--small" >
+                                        Hentai <span id="cat4" class="card__dataSpan card__dataSpan--second "> 4</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--cat">
+                                    <p class="card__dataTxt card__dataTxt--small" >
+                                        MILF <span id="cat5" class="card__dataSpan"> 5</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl  card__dataEl--cat">
+                                    <p class="card__dataTxt card__dataTxt--small" >
+                                        Anal <span id="cat6" class="card__dataSpan card__dataSpan--second "> 6</span>
+                                    </p>
+                                </li>
+                                <li class="card__txtEl">
+                                    <p class="card__dataTxt card__dataTxt--white">
+                                        Tu préfère la catégorie&nbsp;<span id="numCat">10</span>&nbsp;
+                                    </p>
                                 </li>
                             </ul>
                         </div>
@@ -274,17 +339,17 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · Catégorie: Lesbienne
                                 </p>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="sect__el">
+                <li class="sect__el" id="listSex">
                     <div class="sect__card">
                         <div class="sect__cardScreen">
-                            <ul class="sect__listCard">
+                            <ul class="sect__listCard" >
                                 <li class="sect__CardEl">
                                     <p class="sect__txtCard">
                                         sexe(oral/anal)
@@ -334,7 +399,7 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · sexe : F/M
                                 </p>
                             </div>
@@ -386,7 +451,7 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · Temps : 8 min 13
                                 </p>
                             </div>
@@ -406,7 +471,7 @@
                                         Brussel
                                     </p>
                                     <p class="sect__txtCard">
-                                        Tu es un gros sportif
+                                        Se mange aussi rapidement
                                     </p>
                                 </li>
                                 <li class="sect__CardEl">
@@ -430,7 +495,7 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · Temps : 9min23
                                 </p>
                             </div>
@@ -474,7 +539,7 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · Les Boomers
                                 </p>
                             </div>
@@ -520,7 +585,7 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · Les Boomers
                                 </p>
                             </div>
@@ -568,7 +633,7 @@
                                         fill="white" stroke="white" stroke-width="0.2" />
                                 </svg>
 
-                                <p class="sect__txt">
+                                <p class="sect__txt sect__txt--pseudo">
                                     John Doe · le bouton
                                 </p>
                             </div>

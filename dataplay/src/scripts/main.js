@@ -8,21 +8,25 @@ if (submit) {
 }
 
 function activate() {
-    var x = document.getElementById("sexe").value;
+    var x = document.querySelector('input[name="sexe"]:checked');
+
     var reponse = document.querySelectorAll(".formulaire__item:not(:last-child)");
 
     localStorage.setItem('nom', reponse[0].value);
     localStorage.setItem('age', reponse[1].value);
     localStorage.setItem('categorie', reponse[2].value);
     localStorage.setItem('temps', reponse[3].value);
-    localStorage.setItem('sexe', x);
+    localStorage.setItem('device', reponse[4].value);
+    localStorage.setItem('sexe', x.value);
 
     console.log(localStorage.getItem('nom'));
     console.log(localStorage.getItem('age'));
     console.log(localStorage.getItem('categorie'));
     console.log(localStorage.getItem('temps'));
+    console.log(localStorage.getItem('device'));
     console.log(localStorage.getItem('sexe'));
 }
+
 
 
 //// gestion du burger menu 
@@ -81,12 +85,27 @@ imgPubLink.addEventListener('click', () => {
 
 
 
+
+//// ajouter le pseudo de la personne 
+
+let allPseudoList = document.querySelectorAll('.sect__txt--pseudo');
+let listNameElCard = ['Temps moyen : 10min10', 'Devices: pc 69%', 'Age moyen: 38', 'Catégorie: Lesbienne', 'sexe : F/M', 'Temps : 8 min 13', 'Temps : 9min23', 'Les Boomers', 'Les Femmes', 'Le Bouton' ];
+let alphaCount = 0;
+allPseudoList.forEach(el =>{
+    el.innerText = localStorage.getItem('nom')+' · ' + listNameElCard[alphaCount];
+    alphaCount++;
+})
+
+
+
+
+
 //// ouverture card info
 let i = 0;
 var cardList = document.querySelectorAll('.sect__el');
 let dataGraph = document.querySelectorAll('.card__dataList');
 let sectCardInfo = document.querySelectorAll('.sect__listCard');
-//console.log(dataGraph);
+console.log(dataGraph[0].id);
 console.log(sectCardInfo);
 //fetch 
 fetch('assets/data/cul.json')
@@ -95,17 +114,18 @@ fetch('assets/data/cul.json')
     )
     .then(
         data => {
-           // console.log(data);
-           // console.log(data[2].DataBE[0].visitorSexBE.male);
-           // console.log('click clikchu');
-           // console.log(data[2].DataBE[0].visitorSexBE[0]);
-            document.querySelector('#sexHom').innerHTML = data[2].DataBE[0].visitorSexBE.male;
-            document.querySelector('#sexHom').parentElement.parentElement.style.width = (100 + parseInt(data[2].DataBE[0].visitorSexBE.male.slice(0,2))) +"px";
-            document.querySelector('#sexHom').parentElement.parentElement.style.height = (100 + parseInt(data[2].DataBE[0].visitorSexBE.male.slice(0,2))) +"px";
-            document.querySelector('#sexFemme').parentElement.parentElement.style.width = (100 + parseInt(data[2].DataBE[0].visitorSexBE.female.slice(0,2))) +"px";
-            document.querySelector('#sexFemme').parentElement.parentElement.style.height = (100 + parseInt(data[2].DataBE[0].visitorSexBE.female.slice(0,2))) +"px";
-            document.querySelector('#sexFemme').innerHTML = data[2].DataBE[0].visitorSexBE.female;
-            document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.male;
+            let dataTabCat = [];
+            let dataTabAge = [data[4].AgeWorld[0].AgeGlobal.genZ,data[4].AgeWorld[0].AgeGlobal.genY,data[4].AgeWorld[0].AgeGlobal.genX, data[4].AgeWorld[0].AgeGlobal.boomers];
+            let i = 1;
+            for (i; i <= 6; i++) {
+                dataTabCat.push(data[3].Categorie.CategorieWorld[i]);
+            }
+            let indexNumCat = dataTabCat.indexOf(localStorage.getItem('categorie'));
+            graphDataSex(data);
+            graphAgeComparatif(dataTabAge)
+            graphCatComparatif(indexNumCat, dataTabCat[indexNumCat]);
+
+
 
         }
     );
@@ -127,7 +147,10 @@ cardList.forEach(el => {
         } else if (i === 0) {
             el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem(tabCatForm[i]) + 'min';
             i++
-        } else {
+        } else if(i === 1) {
+            el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem('device');
+            i++
+        }else {
             i++
         }
     }
@@ -143,6 +166,21 @@ cardList.forEach(el => {
     });
 });
 
+function graphDataSex(data) {
+    document.querySelector('#sexHom').innerHTML = data[2].DataBE[0].visitorSexBE.male;
+    document.querySelector('#sexHom').parentElement.parentElement.style.width = (100 + parseInt(data[2].DataBE[0].visitorSexBE.male.slice(0, 2))) + "px";
+    document.querySelector('#sexHom').parentElement.parentElement.style.height = (100 + parseInt(data[2].DataBE[0].visitorSexBE.male.slice(0, 2))) + "px";
+    document.querySelector('#sexFemme').parentElement.parentElement.style.width = (100 + parseInt(data[2].DataBE[0].visitorSexBE.female.slice(0, 2))) + "px";
+    document.querySelector('#sexFemme').parentElement.parentElement.style.height = (100 + parseInt(data[2].DataBE[0].visitorSexBE.female.slice(0, 2))) + "px";
+    document.querySelector('#sexFemme').innerHTML = data[2].DataBE[0].visitorSexBE.female;
+    if (localStorage.getItem('sexe') === "homme") {
+        document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.male;
+        document.querySelector('#sexHom').parentElement.parentElement.classList.add('card__dataEl--checkBox');
+    } else {
+        document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.female;
+        document.querySelector('#sexFemme').parentElement.parentElement.classList.add('card__dataEl--checkBox');
+    }
+}
 function phraseVignetteRecord(varControle, nomCarte, el) {
 
     if (varControle.children[0].innerText === nomCarte) {
@@ -154,6 +192,8 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
             console.log(valueSport2);
             if (valueSport2 < 10) {
                 varControle.children[2].innerText = "Tu es présser mon petit";
+            } else if (valueSport2 > 20) {
+                varControle.children[2].innerText = "Calme toi frère";
             } else {
                 varControle.children[2].innerText = " Tu es un gros sportif";
                 console.log('gros boulet au cheville');
@@ -167,6 +207,9 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
         }
         if (nomCarte === "Consomation") {
             console.log('HA');
+            // let valueCat = localStorage.getItem('categorie');
+            // let allElLiCat = document.querySelectorAll('.card__dataEl--cat');
+            // document.querySelector('#numCat').innerHTML = valueCat;
         }
         if (nomCarte === "Sexe(Oral/Anal)") {
             let valueSexe = localStorage.getItem('sexe');
@@ -178,7 +221,7 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
 
             } else if (valueSexe == 'homme') {
                 varControle.children[2].innerText = " La poutre en vue";
-                el.firstElementChild.children[0].children[0].children[1].children[0].src = 'assets/images/poutre.png'
+                el.firstElementChild.children[0].children[0].children[1].children[0].src = 'assets/images/poutre.png';
             }
         }
 
@@ -186,20 +229,85 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
 
 }
 
-function OpenGrafView(el){
+function graphCatComparatif(tab, i) {
+    let valueCat = localStorage.getItem('categorie');
+    let allElLiCat = document.querySelectorAll('.card__dataEl--cat');
+
+    if (valueCat === i) {
+        allElLiCat[tab].classList.add('card__dataEl--checkBox');
+        document.querySelector('#numCat').innerHTML = valueCat + " " + (tab + 1) + "e" + " du top mondial";
+
+    } else {
+        document.querySelector('#numCat').innerHTML = valueCat + 'tu es un cas rare 😏';
+        allElLiCat.forEach(el => {
+            el.classList.remove('card__dataEl--checkBox');
+        })
+    }
+
+}
+function graphAgeComparatif(dataTabAge, i) {
+    let valueAge = localStorage.getItem('age');
+    let allElLiAge = document.querySelectorAll('.card__dataEl--age');
+    if(valueAge === "genZ"){
+        document.querySelector('#numAgePourcentage').innerHTML = dataTabAge[0];
+        allElLiAge[0].classList.add('card__dataEl--checkBox');
+    }else if(valueAge === "genY"){
+        document.querySelector('#numAgePourcentage').innerHTML = dataTabAge[1];
+        allElLiAge[1].classList.add('card__dataEl--checkBox');
+    }else if(valueAge === "genX"){
+        document.querySelector('#numAgePourcentage').innerHTML = dataTabAge[2];
+        allElLiAge[2].classList.add('card__dataEl--checkBox');
+    }else if(valueAge === "boomer"){
+        document.querySelector('#numAgePourcentage').innerHTML = dataTabAge[3];
+        allElLiAge[3].classList.add('card__dataEl--checkBox');
+    }
+}
+
+function OpenGrafView(el) {
 
 
-        console.log('graphhh');
-        if (dataGraph[0].classList.contains('card__dataList--actif')) {
+    console.log('graphhh');
+    console.log(el);
+    if (el.id === "listSex") {
+        console.log('puttttte');
+        if (dataGraph[2].classList.contains('card__dataList--actif')) {
             console.log('femmmme');
-            dataGraph[0].classList.remove('card__dataList--actif');
+            dataGraph[2].classList.remove('card__dataList--actif');
             boxScreen[4].classList.remove('sect__cardScreen--open1');
             sectCardInfo[4].classList.remove('sect__listCard--none');
         } else {
             console.log('putt');
-            dataGraph[0].classList.add('card__dataList--actif');
+            dataGraph[2].classList.add('card__dataList--actif');
             boxScreen[4].classList.add('sect__cardScreen--open1');
             sectCardInfo[4].classList.add('sect__listCard--none');
         }
-    
+    }
+    if (el.id === "listCat") {
+        if (dataGraph[1].classList.contains('card__dataList--actif')) {
+            console.log('femmmme');
+            dataGraph[1].classList.remove('card__dataList--actif');
+            boxScreen[3].classList.remove('sect__cardScreen--open2');
+            sectCardInfo[3].classList.remove('sect__listCard--none');
+        } else {
+            console.log('putt');
+            dataGraph[1].classList.add('card__dataList--actif');
+            boxScreen[3].classList.add('sect__cardScreen--open2');
+            sectCardInfo[3].classList.add('sect__listCard--none');
+        }
+    }
+    if(el.id === "listAge"){
+        if (dataGraph[0].classList.contains('card__dataList--actif')) {
+            console.log('femmmme');
+            dataGraph[0].classList.remove('card__dataList--actif');
+            boxScreen[2].classList.remove('sect__cardScreen--open2');
+            sectCardInfo[2].classList.remove('sect__listCard--none');
+        } else {
+            console.log('putt');
+            dataGraph[0].classList.add('card__dataList--actif');
+            boxScreen[2].classList.add('sect__cardScreen--open2');
+            sectCardInfo[2].classList.add('sect__listCard--none');
+        }
+    }
+
+
 }

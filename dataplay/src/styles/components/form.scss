@@ -1,5 +1,9 @@
 .formulaire{
 
+    margin-top:25px;
+    width: 100%;
+    overflow-y: hidden;     
+
     .formulaire__title, .formulaire__subtitle{
         text-align: center;
         color: white;
@@ -22,8 +26,11 @@
 }
 
 .submit{
+    color: black;
     background-color: #FF9900;
     margin-top: 35px;
+    display: inline-block;
+    text-align: center;
     width: 250px;
     margin-left: 50%;
     transform: translate(-50%);
@@ -31,4 +38,12 @@
     font-size: 25px;
     padding: 10px 20px;
     border: none;
+    font-weight:600;
+    &:hover{
+        transition: all .3s;
+        transform: translate(-50%, 0px) scale(1.05);
+        background-color: #ffac2e;
+        
+
+    }
 }
