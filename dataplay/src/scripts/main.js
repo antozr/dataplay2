@@ -27,6 +27,19 @@ function activate() {
     console.log(localStorage.getItem('sexe'));
 }
 
+var majorite = document.querySelector(".pene");
+var back = document.querySelector(".cover");
+var pop = document.querySelector(".popup");
+
+if (majorite) {
+    majorite.addEventListener("click", blurnone);
+}
+
+function blurnone() {
+    back.classList.toggle("blur-out");
+    pop.classList.toggle("none");
+}
+
 
 
 //// gestion du burger menu 
@@ -86,18 +99,6 @@ imgPubLink.addEventListener('click', () => {
 
 
 
-//// ajouter le pseudo de la personne 
-
-let allPseudoList = document.querySelectorAll('.sect__txt--pseudo');
-let listNameElCard = ['Temps moyen : 10min10', 'Devices: pc 69%', 'Age moyen: 38', 'Catégorie: Lesbienne', 'sexe : F/M', 'Temps : 8 min 13', 'Temps : 9min23', 'Les Boomers', 'Les Femmes', 'Le Bouton' ];
-let alphaCount = 0;
-allPseudoList.forEach(el =>{
-    el.innerText = localStorage.getItem('nom')+' · ' + listNameElCard[alphaCount];
-    alphaCount++;
-})
-
-
-
 
 
 //// ouverture card info
@@ -105,7 +106,7 @@ let i = 0;
 var cardList = document.querySelectorAll('.sect__el');
 let dataGraph = document.querySelectorAll('.card__dataList');
 let sectCardInfo = document.querySelectorAll('.sect__listCard');
-console.log(dataGraph[0].id);
+console.log(dataGraph);
 console.log(sectCardInfo);
 //fetch 
 fetch('assets/data/cul.json')
@@ -115,14 +116,18 @@ fetch('assets/data/cul.json')
     .then(
         data => {
             let dataTabCat = [];
-            let dataTabAge = [data[4].AgeWorld[0].AgeGlobal.genZ,data[4].AgeWorld[0].AgeGlobal.genY,data[4].AgeWorld[0].AgeGlobal.genX, data[4].AgeWorld[0].AgeGlobal.boomers];
+            let dataTabAge = [data[4].AgeWorld[0].AgeGlobal.genZ, data[4].AgeWorld[0].AgeGlobal.genY, data[4].AgeWorld[0].AgeGlobal.genX, data[4].AgeWorld[0].AgeGlobal.boomers];
             let i = 1;
             for (i; i <= 6; i++) {
                 dataTabCat.push(data[3].Categorie.CategorieWorld[i]);
             }
+            let dataDeviceBe = data[2].DataBE[2].DeviceBE;
+            console.log(dataDeviceBe);
             let indexNumCat = dataTabCat.indexOf(localStorage.getItem('categorie'));
+            calcHeightTimeBar(data);
             graphDataSex(data);
-            graphAgeComparatif(dataTabAge)
+            calcWidthDevice(dataDeviceBe);
+            graphAgeComparatif(dataTabAge);
             graphCatComparatif(indexNumCat, dataTabCat[indexNumCat]);
 
 
@@ -147,10 +152,10 @@ cardList.forEach(el => {
         } else if (i === 0) {
             el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem(tabCatForm[i]) + 'min';
             i++
-        } else if(i === 1) {
+        } else if (i === 1) {
             el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem('device');
             i++
-        }else {
+        } else {
             i++
         }
     }
@@ -181,6 +186,10 @@ function graphDataSex(data) {
         document.querySelector('#sexFemme').parentElement.parentElement.classList.add('card__dataEl--checkBox');
     }
 }
+
+
+
+
 function phraseVignetteRecord(varControle, nomCarte, el) {
 
     if (varControle.children[0].innerText === nomCarte) {
@@ -188,15 +197,20 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
         let valueSport = localStorage.getItem('temps');
         // check valeur + fonction spécial 
         if (nomCarte === "Flash") {
+            let idBoxTextTemp = document.querySelector('#tempUtilPourcentage');
             let valueSport2 = valueSport.slice(0, 2);
-            console.log(valueSport2);
+            // console.log(valueSport2);
             if (valueSport2 < 10) {
                 varControle.children[2].innerText = "Tu es présser mon petit";
+                idBoxTextTemp.innerText = 'est  plus rapide que la moyen Belge';
             } else if (valueSport2 > 20) {
                 varControle.children[2].innerText = "Calme toi frère";
+                idBoxTextTemp.innerText = ' fais sauter touuuuuuut les records';
+
             } else {
                 varControle.children[2].innerText = " Tu es un gros sportif";
-                console.log('gros boulet au cheville');
+                idBoxTextTemp.innerText = 'est  proche de la moyen, on est fier de toi';
+                // console.log('gros boulet au cheville');
             }
         }
         if (nomCarte === "Utilisateur Tablette") {
@@ -207,6 +221,9 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
         }
         if (nomCarte === "Consomation") {
             console.log('HA');
+            if (localStorage.getItem('categorie') === 'Doule pénétration') {
+                varControle.children[2].innerText = "Tu connais le 18 trous au golf? ";
+            }
             // let valueCat = localStorage.getItem('categorie');
             // let allElLiCat = document.querySelectorAll('.card__dataEl--cat');
             // document.querySelector('#numCat').innerHTML = valueCat;
@@ -229,35 +246,96 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
 
 }
 
+function calcWidthDevice(dataCu) {
+    let listDevice = document.querySelectorAll('.card__dataSpan--device ');
+    let listAllLiDevice = document.querySelectorAll('.card__dataEl--device');
+    let txtDeviceAll = document.querySelector('#resumDevice');
+    let i = 0;
+    listDevice.forEach(el => {
+        if (i == 0) {
+            el.innerText = dataCu.tablet;
+            listAllLiDevice[i].style.width = 120 + parseInt(dataCu.tablet) + "px";
+            listAllLiDevice[i].style.height = 120 + parseInt(dataCu.tablet) + "px";
+            
+       
+            i++
+        } else if (i === 1) {
+            el.innerText = dataCu.gsm;
+            listAllLiDevice[i].style.width = 120 + parseInt(dataCu.gsm) + "px";
+            listAllLiDevice[i].style.height = 120 + parseInt(dataCu.gsm) + "px";
+           
+            i++
+        } else {
+            el.innerText = dataCu.pc;
+            listAllLiDevice[i].style.width = 120 + parseInt(dataCu.pc) + "px";
+            listAllLiDevice[i].style.height = 120 + parseInt(dataCu.pc) + "px";
+           
+            i = 0;
+        }
+
+        if(localStorage.getItem('device')==='tablet'){
+            txtDeviceAll.innerText=dataCu.tablet;
+            listAllLiDevice[0].classList.add('card__dataEl--checkBox');
+        }else if(localStorage.getItem('device')==='gsm'){
+            txtDeviceAll.innerText=dataCu.gsm;
+            listAllLiDevice[1].classList.add('card__dataEl--checkBox');
+        }else{
+            txtDeviceAll.innerText=dataCu.pc;
+            listAllLiDevice[2].classList.add('card__dataEl--checkBox');
+        }
+    });
+}
+
+
+function calcHeightTimeBar() {
+    let barreGraph = document.querySelector('.card__dataEl--moi');
+    let dataLocal = localStorage.getItem('temps');
+
+    if (dataLocal > 20) {
+        barreGraph.style.height = "600px";
+        document.querySelector('#timePerso').innerText = dataLocal + 'min' + '\u00a0😲';
+    } else if (dataLocal < 20 && dataLocal > 10) {
+        barreGraph.style.height = (410 + parseInt(dataLocal) + "px");
+        document.querySelector('#timePerso').innerText = dataLocal + 'min' + '\u00a0😏'
+    } else if (dataLocal < 10) {
+        barreGraph.style.height = ((410 - dataLocal) + "px");
+        document.querySelector('#timePerso').innerText = dataLocal + 'min' + '\u00a0😖'
+    }
+}
+
+
+
+
+
 function graphCatComparatif(tab, i) {
     let valueCat = localStorage.getItem('categorie');
     let allElLiCat = document.querySelectorAll('.card__dataEl--cat');
 
     if (valueCat === i) {
         allElLiCat[tab].classList.add('card__dataEl--checkBox');
-        document.querySelector('#numCat').innerHTML = valueCat + " " + (tab + 1) + "e" + " du top mondial";
+        document.querySelector('#numCat').innerHTML = valueCat + ", " + (tab + 1) + "e" + " du top mondial";
 
     } else {
-        document.querySelector('#numCat').innerHTML = valueCat + 'tu es un cas rare 😏';
+        document.querySelector('#numCat').innerHTML = valueCat + ', tu es un cas rare 😏';
         allElLiCat.forEach(el => {
             el.classList.remove('card__dataEl--checkBox');
         })
     }
 
 }
-function graphAgeComparatif(dataTabAge, i) {
+function graphAgeComparatif(dataTabAge) {
     let valueAge = localStorage.getItem('age');
     let allElLiAge = document.querySelectorAll('.card__dataEl--age');
-    if(valueAge === "genZ"){
+    if (valueAge === "genZ") {
         document.querySelector('#numAgePourcentage').innerHTML = dataTabAge[0];
         allElLiAge[0].classList.add('card__dataEl--checkBox');
-    }else if(valueAge === "genY"){
+    } else if (valueAge === "genY") {
         document.querySelector('#numAgePourcentage').innerHTML = dataTabAge[1];
         allElLiAge[1].classList.add('card__dataEl--checkBox');
-    }else if(valueAge === "genX"){
+    } else if (valueAge === "genX") {
         document.querySelector('#numAgePourcentage').innerHTML = dataTabAge[2];
         allElLiAge[2].classList.add('card__dataEl--checkBox');
-    }else if(valueAge === "boomer"){
+    } else if (valueAge === "boomer") {
         document.querySelector('#numAgePourcentage').innerHTML = dataTabAge[3];
         allElLiAge[3].classList.add('card__dataEl--checkBox');
     }
@@ -270,42 +348,69 @@ function OpenGrafView(el) {
     console.log(el);
     if (el.id === "listSex") {
         console.log('puttttte');
-        if (dataGraph[2].classList.contains('card__dataList--actif')) {
+        if (dataGraph[4].classList.contains('card__dataList--actif')) {
             console.log('femmmme');
-            dataGraph[2].classList.remove('card__dataList--actif');
+            dataGraph[4].classList.remove('card__dataList--actif');
             boxScreen[4].classList.remove('sect__cardScreen--open1');
             sectCardInfo[4].classList.remove('sect__listCard--none');
         } else {
             console.log('putt');
-            dataGraph[2].classList.add('card__dataList--actif');
+            dataGraph[4].classList.add('card__dataList--actif');
             boxScreen[4].classList.add('sect__cardScreen--open1');
             sectCardInfo[4].classList.add('sect__listCard--none');
         }
     }
     if (el.id === "listCat") {
-        if (dataGraph[1].classList.contains('card__dataList--actif')) {
+        if (dataGraph[3].classList.contains('card__dataList--actif')) {
             console.log('femmmme');
-            dataGraph[1].classList.remove('card__dataList--actif');
+            dataGraph[3].classList.remove('card__dataList--actif');
             boxScreen[3].classList.remove('sect__cardScreen--open2');
             sectCardInfo[3].classList.remove('sect__listCard--none');
         } else {
             console.log('putt');
-            dataGraph[1].classList.add('card__dataList--actif');
+            dataGraph[3].classList.add('card__dataList--actif');
             boxScreen[3].classList.add('sect__cardScreen--open2');
             sectCardInfo[3].classList.add('sect__listCard--none');
         }
     }
-    if(el.id === "listAge"){
-        if (dataGraph[0].classList.contains('card__dataList--actif')) {
+    if (el.id === "listAge") {
+        if (dataGraph[2].classList.contains('card__dataList--actif')) {
             console.log('femmmme');
-            dataGraph[0].classList.remove('card__dataList--actif');
+            dataGraph[2].classList.remove('card__dataList--actif');
             boxScreen[2].classList.remove('sect__cardScreen--open2');
             sectCardInfo[2].classList.remove('sect__listCard--none');
         } else {
             console.log('putt');
-            dataGraph[0].classList.add('card__dataList--actif');
+            dataGraph[2].classList.add('card__dataList--actif');
             boxScreen[2].classList.add('sect__cardScreen--open2');
             sectCardInfo[2].classList.add('sect__listCard--none');
+        }
+    }
+    if (el.id === "listDivice") {
+        if (dataGraph[1].classList.contains('card__dataList--actif')) {
+            dataGraph[1].classList.remove('card__dataList--actif');
+            boxScreen[1].classList.remove('sect__cardScreen--open3');
+            sectCardInfo[1].classList.remove('sect__listCard--none');
+        } else {
+            dataGraph[1].classList.add('card__dataList--actif');
+            boxScreen[1].classList.add('sect__cardScreen--open3');
+            sectCardInfo[1].classList.add('sect__listCard--none');
+        }
+    }
+    if (el.id === "listTemp") {
+        console.log('Pute de tes morts');
+        if (dataGraph[0].classList.contains('card__dataList--actif')) {
+            console.log('femmmme');
+            dataGraph[0].classList.remove('card__dataList--actif');
+            dataGraph[0].classList.remove('card__dataList--time');
+            boxScreen[0].classList.remove('sect__cardScreen--open2');
+            sectCardInfo[0].classList.remove('sect__listCard--none');
+        } else {
+            console.log('putt');
+            dataGraph[0].classList.add('card__dataList--actif');
+            dataGraph[0].classList.add('card__dataList--time');
+            boxScreen[0].classList.add('sect__cardScreen--open2');
+            sectCardInfo[0].classList.add('sect__listCard--none');
         }
     }
 
