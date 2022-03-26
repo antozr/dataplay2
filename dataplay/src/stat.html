@@ -10,13 +10,18 @@
     <!-- Meta Partage -->
     <!-- Favicon -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!--font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,900;1,300;1,500;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles/app.css">
 
     <script src="scripts/main.js" defer></script>
 </head>
 
-<body>  
+<body>
     <header class="head">
         <div class="head__main">
             <button class="head__btn ">
@@ -109,7 +114,7 @@
                 </span>
             </h1>
             <ul class="sect__list">
-                <li class="sect__el">
+                <li class="sect__el" id="listTemp">
                     <div class="sect__card">
                         <div class="sect__cardScreen">
                             <ul class="sect__listCard">
@@ -126,6 +131,51 @@
                                 </li>
                                 <li class="sect__CardEl">
                                     <img src="assets/images/sport1.png" alt="tu es sprotif" class="sect__cardImg">
+                                </li>
+                                <li class="sect__CardBtn">
+                                    <p>Voir plus <svg width="24" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="#FF9900"/>
+                                        </svg>
+                                        </p>
+                                </li>
+                            </ul>
+                            <ul class="card__dataList">
+                                <li class="card__dataEl card__dataEl--temps">
+                                    <p class="card__dataTxt">
+                                        Philippines <span  class="card__dataSpan"> 11min31</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--temps">
+                                    <p class="card__dataTxt">
+                                        Belgique <span  class="card__dataSpan card__dataSpan--second "> 10min10</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--temps">
+                                    <p class="card__dataTxt">
+                                        Japan <span  class="card__dataSpan card__dataSpan--second "> 10min03</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--temps">
+                                    <p class="card__dataTxt">
+                                        France <span  class="card__dataSpan"> 10min02</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--temps">
+                                    <p class="card__dataTxt">
+                                        Pays&nbsp;Bas <span  class="card__dataSpan"> 9min59</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--temps card__dataEl--moi">
+                                    <p class="card__dataTxt">
+                                        Toi <span id="timePerso" class="card__dataSpan card__dataSpan--second "> 10min10</span>
+                                    </p>
+                                </li>
+                                <!--la phrase de présentation -->
+                                
+                                <li class="card__txtEl">
+                                    <p class="card__dataTxt card__dataTxt--white">
+                                        Ton speedrun &nbsp;<span id="tempUtilPourcentage">10</span>
+                                    </p>
                                 </li>
                             </ul>
                         </div>
@@ -146,13 +196,13 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · Temps moyen : 10min10
+                                    Top 1 · Temps moyen : 10min10
                                 </p>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="sect__el">
+                <li class="sect__el" id="listDivice">
                     <div class="sect__card">
                         <div class="sect__cardScreen">
                             <ul class="sect__listCard">
@@ -169,6 +219,35 @@
                                 </li>
                                 <li class="sect__CardEl">
                                     <img src="assets/images/fume.png" alt="tu es sprotif" class="sect__cardImg">
+                                </li>
+                                <li class="sect__CardBtn">
+                                    <p>Voir plus <svg width="24" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="#FF9900"/>
+                                        </svg>
+                                        </p>
+                                </li>
+                            </ul>
+                            <ul class="card__dataList card__dataList--device">
+                                <li class="card__dataEl card__dataEl--device">
+                                    <p class="card__dataTxt">
+                                        Tablette <span id="tabDiv" class="card__dataSpan card__dataSpan--device  "> 12</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl card__dataEl--device ">
+                                    <p class="card__dataTxt">
+                                        GSM <span id="gsmDiv" class="card__dataSpan card__dataSpan--device  card__dataSpan--second "> 1</span>
+                                    </p>
+                                </li>
+                                <li class="card__dataEl ">
+                                    <p class="card__dataTxt">
+                                        PC <span id="gsmDiv" class="card__dataSpan  card__dataSpan--device  card__dataSpan--second "> 1</span>
+                                    </p>
+                                </li>
+                                <!--la phrase de présentation -->
+                                <li class="card__txtEl card__dataEl--device">
+                                    <p class="card__dataTxt card__dataTxt--white">
+                                        Tu es comme&nbsp;<span id="resumDevice">10</span> des utilisateurs
+                                    </p>
                                 </li>
                             </ul>
                         </div>
@@ -189,7 +268,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · Devices: pc 69%
+                                    Top 1 · Devices: pc 69%
                                 </p>
                             </div>
                         </div>
@@ -213,26 +292,33 @@
                                 <li class="sect__CardEl">
                                     <img src="assets/images/conso.png" alt="tu es sprotif" class="sect__cardImg">
                                 </li>
+                                <li class="sect__CardBtn">
+                                    <p>Voir plus <svg width="24" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="#FF9900"/>
+                                        </svg>
+                                        </p>
+                                </li>
                             </ul>
                             <ul class="card__dataList">
                                 <li class="card__dataEl card__dataEl--age">
-                                    <p class="card__dataTxt" >
+                                    <p class="card__dataTxt">
                                         GenZ<span id="ageZ" class="card__dataSpan"> 25%</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl card__dataEl--age">
-                                    <p class="card__dataTxt" >
+                                    <p class="card__dataTxt">
                                         GenY <span id="ageY" class="card__dataSpan card__dataSpan--second "> 26%</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl card__dataEl--age">
-                                    <p class="card__dataTxt" >
+                                    <p class="card__dataTxt">
                                         GenX <span id="ageX" class="card__dataSpan card__dataSpan--second "> 33%</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl card__dataEl--age">
-                                    <p class="card__dataTxt" >
-                                        Boomers <span id="boom" class="card__dataSpan card__dataSpan--second "> 16%</span>
+                                    <p class="card__dataTxt">
+                                        Boomers <span id="boom" class="card__dataSpan card__dataSpan--second ">
+                                            16%</span>
                                     </p>
                                 </li>
                                 <li class="card__txtEl card__txtEl--up">
@@ -259,7 +345,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · Age moyen: 38
+                                    Top 1 · Age moyen: 38
                                 </p>
                             </div>
                         </div>
@@ -283,36 +369,43 @@
                                 <li class="sect__CardEl">
                                     <img src="assets/images/cat.png" alt="tu es sprotif" class="sect__cardImg">
                                 </li>
+                                <li class="sect__CardBtn">
+                                    <p>Voir plus <svg width="24" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="#FF9900"/>
+                                        </svg>
+                                        </p>
+                                </li>
                             </ul>
 
-                            <ul class="card__dataList" >
+                            <ul class="card__dataList">
                                 <li class="card__dataEl card__dataEl--cat">
-                                    <p class="card__dataTxt" >
+                                    <p class="card__dataTxt">
                                         Japonaise <span id="cat1" class="card__dataSpan"> 1 👑</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl  card__dataEl--cat">
-                                    <p class="card__dataTxt" >
-                                        Lesbienne <span id="cat2" class="card__dataSpan card__dataSpan--second "> 2</span>
+                                    <p class="card__dataTxt">
+                                        Lesbienne <span id="cat2" class="card__dataSpan card__dataSpan--second ">
+                                            2</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl card__dataEl--cat">
-                                    <p class="card__dataTxt" >
+                                    <p class="card__dataTxt">
                                         Ebony <span id="cat3" class="card__dataSpan"> 3</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl  card__dataEl--cat">
-                                    <p class="card__dataTxt card__dataTxt--small" >
+                                    <p class="card__dataTxt card__dataTxt--small">
                                         Hentai <span id="cat4" class="card__dataSpan card__dataSpan--second "> 4</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl card__dataEl--cat">
-                                    <p class="card__dataTxt card__dataTxt--small" >
+                                    <p class="card__dataTxt card__dataTxt--small">
                                         MILF <span id="cat5" class="card__dataSpan"> 5</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl  card__dataEl--cat">
-                                    <p class="card__dataTxt card__dataTxt--small" >
+                                    <p class="card__dataTxt card__dataTxt--small">
                                         Anal <span id="cat6" class="card__dataSpan card__dataSpan--second "> 6</span>
                                     </p>
                                 </li>
@@ -340,7 +433,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · Catégorie: Lesbienne
+                                    Top 1 · Catégorie: Lesbienne
                                 </p>
                             </div>
                         </div>
@@ -349,7 +442,7 @@
                 <li class="sect__el" id="listSex">
                     <div class="sect__card">
                         <div class="sect__cardScreen">
-                            <ul class="sect__listCard" >
+                            <ul class="sect__listCard">
                                 <li class="sect__CardEl">
                                     <p class="sect__txtCard">
                                         sexe(oral/anal)
@@ -364,15 +457,21 @@
                                 <li class="sect__CardEl">
                                     <img src="assets/images/femme.png" alt="tu es sprotif" class="sect__cardImg">
                                 </li>
+                                <li class="sect__CardBtn">
+                                    <p>Voir plus <svg width="24" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="#FF9900"/>
+                                        </svg>
+                                        </p>
+                                </li>
                             </ul>
                             <ul class="card__dataList">
                                 <li class="card__dataEl">
-                                    <p class="card__dataTxt" >
+                                    <p class="card__dataTxt">
                                         Femme <span id="sexFemme" class="card__dataSpan"> 12</span>
                                     </p>
                                 </li>
                                 <li class="card__dataEl ">
-                                    <p class="card__dataTxt" >
+                                    <p class="card__dataTxt">
                                         Homme <span id="sexHom" class="card__dataSpan card__dataSpan--second "> 1</span>
                                     </p>
                                 </li>
@@ -400,7 +499,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · sexe : F/M
+                                    Top 1 · sexe : F/M
                                 </p>
                             </div>
                         </div>
@@ -452,7 +551,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · Temps : 8 min 13
+                                    Top 1 · Temps : 8 min 13
                                 </p>
                             </div>
                         </div>
@@ -496,7 +595,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · Temps : 9min23
+                                    Top 1 · Temps : 9min23
                                 </p>
                             </div>
                         </div>
@@ -540,7 +639,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · Les Boomers
+                                    Top 1 · Les Boomers
                                 </p>
                             </div>
                         </div>
@@ -586,7 +685,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · Les Boomers
+                                    Top 1 · Les Boomers
                                 </p>
                             </div>
                         </div>
@@ -613,9 +712,9 @@
                                     <img src="assets/images/reback.webp" alt="tu es sprotif"
                                         class="sect__cardImg sect__cardImg--small ">
                                 </li>
-                                
+
                             </ul>
-                            
+
                         </div>
                         <div class="sect__cardInfo">
                             <p class="sect__txt">
@@ -634,7 +733,7 @@
                                 </svg>
 
                                 <p class="sect__txt sect__txt--pseudo">
-                                    John Doe · le bouton
+                                    Top 1 · le bouton
                                 </p>
                             </div>
                         </div>
