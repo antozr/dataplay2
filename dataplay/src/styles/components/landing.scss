@@ -3,7 +3,7 @@ main{
 }
 
 .box{
-    font-size: 64px;
+    font-size: 30px;
     font-family: arial;
     text-align: center;
     height: 600px;
@@ -28,8 +28,25 @@ main{
 
 .box__svg{
     height: 300px;
+    stroke: #FF9900;
+    stroke-width: 3px;
+    top: 30px;
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    
+    &--img{
+        height: 500px;
+        top: 250px;
+        width: 500px;
+    }
 }
 
 .txt__style{
     line-height: 140%;
+    width: 70%;
+}
+
+.txt__orange{
+    color: #FF9900;
 }
