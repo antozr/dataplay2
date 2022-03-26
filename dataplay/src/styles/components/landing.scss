@@ -1,7 +1,35 @@
+main{
+    height: 100vh;
+}
+
+.box{
+    font-size: 64px;
+    font-family: arial;
+    text-align: center;
+    height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-weight: bold;
+}
+
 .box__disabled{
     display: none;
 }
 
 .box__add{
     display: block;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-weight: bold;
+}
+
+.box__svg{
+    height: 300px;
+}
+
+.txt__style{
+    line-height: 140%;
 }
