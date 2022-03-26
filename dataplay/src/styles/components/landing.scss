@@ -1,12 +1,14 @@
 main{
-    height: 100vh;
+    font-family: arial;
+    line-height: 140%;
+    position: relative;
 }
 
 .box{
     font-size: 30px;
     font-family: arial;
     text-align: center;
-    height: 600px;
+    height: 101vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -30,15 +32,15 @@ main{
     height: 300px;
     stroke: #FF9900;
     stroke-width: 3px;
-    top: 30px;
+    top: 17.5vh;
     position: absolute;
     width: 800px;
     height: 600px;
     
     &--img{
         height: 500px;
-        top: 250px;
-        width: 500px;
+        top: 350px;
+        width: 80%;
     }
 }
 
@@ -49,4 +51,30 @@ main{
 
 .txt__orange{
     color: #FF9900;
+}
+
+.box__video{
+    width: 100%;
+
+    &--add{
+        display: block;
+    }
+}
+
+.title{
+    &__video{
+        font-size: 40px;
+        text-align: center;
+    }
+
+    &__txt{
+        font-size: 30px;
+        margin-left: 8rem;
+    }
+}
+
+.txt__video{
+    font-size: 25px;
+    margin-left: 8rem;
+    line-height: 140%;
 }
