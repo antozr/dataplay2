@@ -2,13 +2,14 @@ body{
     background-color: black;
     color: black;
     font-size: 16px;
-    line-height: 30px;
+    line-height: 140%;
     overflow-x: hidden;
-    max-width: 100ch;
   }
+
   svg {
     fill: #FF9900;
   }
+
   a{
     text-decoration: none;
       font-size: 16px;
@@ -30,16 +31,20 @@ body{
       border-right: 1px solid #FF9900;
     margin-top: 20px;
   }
+
   .footer__item a:hover {
     color: orange;
     border-bottom: #FF9900;
   }
+
   .footer__item:last-child {
       border: none;
   }
+
   .footer--copyright {
     margin-bottom: 20px;
   }
+
   .dwm {
       width: 100px;
       display: inline-block;
@@ -47,7 +52,9 @@ body{
     position: relative;
   
   }
+
   .section--footer {
+    margin-top: 120px;
     padding-top: 5px;
     padding-bottom: 30px;
     display: flex;
@@ -58,14 +65,9 @@ body{
   
   @media only screen and (min-width: 768px) {
     
-   
-  
     .footer__item {
       padding: 0 50px;
     }
-  
-  
-  
   
     @media only screen and (min-width: 990px) {
       body{
