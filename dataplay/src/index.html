@@ -35,9 +35,9 @@
 
     <section class="box box__disabled"><p class="txt__style">De toute façon cette expérience est faite pour <span class="txt__orange">toi</span>.</p></section>
     <section class="box box__disabled"><p class="txt__style">De toute façon cette expérience est faite pour <span class="txt__orange">TOI</span>.</p>
-      <svg width="113" height="146" viewBox="0 0 113 146" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1.64258 65.9324C13.6863 91.4886 27.889 120.791 45.9433 142.858C49.7368 147.494 56.3431 135.789 57.7339 133.471C72.0293 109.645 87.1286 81.746 110.849 65.9324" stroke="#FF9900" stroke-width="3" stroke-linecap="round"/>
-        <path d="M51.7021 1.97205V85.5972" stroke="#FF9900" stroke-width="3" stroke-linecap="round"/>
+      <svg class="svg__box" viewBox="0 0 113 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.64258 65.9324C13.6863 91.4886 27.889 120.791 45.9433 142.858C49.7368 147.494 56.3431 135.789 57.7339 133.471C72.0293 109.645 87.1286 81.746 110.849 65.9324" stroke-linecap="round"/>
+        <path d="M51.7021 1.97205V85.5972" stroke-linecap="round"/>
         </svg>
     </section>
 
@@ -45,11 +45,50 @@
 
       <h1 class="title__video">Beat the meat<span class="txt__orange">.</span></h1>
 
-      <video></video>
+      <video class="style__video" src="./assets/images/video.webm" autoplay controls></video>
 
       <h2 class="title__txt">Etes-vous pret à comparer vos <span class="txt__orange">déviances</span> avec les autres ?</h2>
       <p class="txt__video">Grâce à toute les données récoltées nous avons pu te créer une expérience personalisée qui te permet de comparer tes déviances avec le reste du monde. T’inquiete tout est anomyme </p>
+      <h3 class="title__catego">Les cochoneries que l’on compare</h3>
+
+      <ul class="style__ul">
+        <li class="style__li">
+          <svg width="52" height="61" viewBox="0 0 52 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M34.7303 0.992676H17.5624V6.69862H34.7303V0.992676ZM23.285 38.0813H29.0077V20.9635H23.285V38.0813ZM46.2614 19.2232L50.3245 15.1719C49.0941 13.7169 47.7493 12.3475 46.29 11.1493L42.2269 15.2005C37.7919 11.6628 32.2123 9.55159 26.1464 9.55159C11.9256 9.55159 0.394531 21.0491 0.394531 35.2283C0.394531 49.4076 11.897 60.9051 26.1464 60.9051C40.3957 60.9051 51.8982 49.4076 51.8982 35.2283C51.8982 29.18 49.7808 23.6167 46.2614 19.2232ZM26.1464 55.1991C15.0731 55.1991 6.11716 46.2693 6.11716 35.2283C6.11716 24.1873 15.0731 15.2575 26.1464 15.2575C37.2196 15.2575 46.1756 24.1873 46.1756 35.2283C46.1756 46.2693 37.2196 55.1991 26.1464 55.1991Z" fill="white"/>
+            </svg>
+          <p>Temps</p></li>
+          
+        <li class="style__li">
+          <svg width="52" height="47" viewBox="0 0 52 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.6137 21.0665C26.2673 21.0665 30.8505 16.4834 30.8505 10.8298C30.8505 5.17617 26.2673 0.593018 20.6137 0.593018C14.9601 0.593018 10.377 5.17617 10.377 10.8298C10.377 16.4834 14.9601 21.0665 20.6137 21.0665Z" fill="white"/>
+            <path d="M21.5089 26.2104C14.5223 25.9545 0.139648 29.435 0.139648 36.4216V41.54H24.5543C18.2331 34.4766 21.4065 26.4663 21.5089 26.2104Z" fill="white"/>
+            <path d="M44.7462 36.473C45.6675 34.963 46.2049 33.1972 46.2049 31.3034C46.2049 25.6476 41.624 21.0667 35.9682 21.0667C30.3124 21.0667 25.7314 25.6476 25.7314 31.3034C25.7314 36.9592 30.3124 41.5401 35.9682 41.5401C37.862 41.5401 39.6278 40.9771 41.1378 40.0814L47.7149 46.6585L51.3233 43.0501L44.7462 36.473ZM35.9682 36.4218C33.1531 36.4218 30.8498 34.1185 30.8498 31.3034C30.8498 28.4883 33.1531 26.185 35.9682 26.185C38.7833 26.185 41.0866 28.4883 41.0866 31.3034C41.0866 34.1185 38.7833 36.4218 35.9682 36.4218Z" fill="white"/>
+            </svg>
+          <p>Âge</p></li>
+
+        <li class="style__li">
+          <svg width="50" height="41" viewBox="0 0 50 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.78829 16.8395C2.60726 16.8395 0.84668 18.6294 0.84668 20.8468C0.84668 23.0642 2.60726 24.8541 4.78829 24.8541C6.96931 24.8541 8.72989 23.0642 8.72989 20.8468C8.72989 18.6294 6.96931 16.8395 4.78829 16.8395ZM4.78829 0.810303C2.60726 0.810303 0.84668 2.60023 0.84668 4.8176C0.84668 7.03497 2.60726 8.8249 4.78829 8.8249C6.96931 8.8249 8.72989 7.03497 8.72989 4.8176C8.72989 2.60023 6.96931 0.810303 4.78829 0.810303ZM4.78829 32.8687C2.60726 32.8687 0.84668 34.6853 0.84668 36.876C0.84668 39.0667 2.63354 40.8833 4.78829 40.8833C6.94303 40.8833 8.72989 39.0667 8.72989 36.876C8.72989 34.6853 6.96931 32.8687 4.78829 32.8687ZM12.6715 39.5475H49.4598V34.2045H12.6715V39.5475ZM12.6715 23.5183H49.4598V18.1753H12.6715V23.5183ZM12.6715 2.14607V7.48913H49.4598V2.14607H12.6715Z" fill="white"/>
+            </svg>
+          <p>Catégories</p></li>
+
+        <li class="style__li">
+          <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.7077 5.36498H54.8537V0.503662H10.7077C8.00987 0.503662 5.80257 2.69125 5.80257 5.36498V32.1022H0.897461V39.3942H35.2332V32.1022H10.7077V5.36498ZM57.3062 10.2263H42.5909C41.242 10.2263 40.1383 11.3201 40.1383 12.6569V36.9635C40.1383 38.3004 41.242 39.3942 42.5909 39.3942H57.3062C58.6551 39.3942 59.7588 38.3004 59.7588 36.9635V12.6569C59.7588 11.3201 58.6551 10.2263 57.3062 10.2263ZM54.8537 32.1022H45.0434V15.0876H54.8537V32.1022Z" fill="white"/>
+            </svg>
+          <p>Device</p></li>
+      </ul>
+
       <h2 class="title__txt">En gros c’est qu’est-ce que <span class="txt__orange">Datahub</span> ?</h2>
+      <p class="txt__video">Data hub est éxpérience sociale interactive pour vous rendre compte qu’il y a toujours pire que vous (enfin on epspère), celle ci vous permet de vous comparer au bases de données d’un site que l’on a meme pas besoin de nomer </p>
+
+      <h3 class="title__catego">Approuvé par :</h3>
+      <div class="box__images">
+        <img src="./assets/images/Mia.png">
+        <img src="./assets/images/fereraaaaaa.png">
+        <img src="./assets/images/Nikita.png">
+      </div>
+
 
     </section>
 

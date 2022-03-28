@@ -5,7 +5,7 @@ main{
 }
 
 .box{
-    font-size: 30px;
+    font-size: 40px;
     font-family: arial;
     text-align: center;
     height: 101vh;
@@ -70,6 +70,14 @@ main{
     &__txt{
         font-size: 30px;
         margin-left: 8rem;
+        margin-top: 120px;
+    }
+
+    &__catego{
+        font-size: 20px;
+        margin-left: 8rem;
+        margin-top: 120px;
+        text-transform: uppercase;
     }
 }
 
@@ -77,4 +85,64 @@ main{
     font-size: 25px;
     margin-left: 8rem;
     line-height: 140%;
+    margin-top: 60px;
+    width: 80%;
+}
+
+.style__video{
+    width: 100%;
+    height: 600px;
+    background-color: red;
+    margin-top: 50px;
+}
+
+.svg__box{
+    stroke-width: 3px;
+    stroke: #FF9900;
+    position: absolute;
+    width: 100px;
+    fill: none;
+    top: 30rem;
+}
+
+.style{
+    &__ul{
+        list-style: none;
+        margin-left: 8rem;
+        margin-right: 8rem;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center;
+    }
+
+    &__li{
+        width: 200px;
+        height: 200px;
+        background-color: #FF9900;
+        border-radius: 30px;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        margin: 30px;
+    }
+
+    &__li>svg{
+        width: 100%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+        
+}
+
+.box__images{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 8rem;
+    margin-right: 8rem;
+}
+
+.box__images>img{
+    margin: 10px;
 }
