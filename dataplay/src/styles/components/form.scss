@@ -2,26 +2,37 @@
     0% {
         filter: blur(4px);
         pointer-events: none;
+        position:fixed;
     }
 
     100% {
         filter: blur(0px);
         pointer-events: auto;
+        position:inherit
     }
+}
+
+html{
+  height: 100%;
+  margin: auto;
+  width: 100%;
+  overflow: hidden;
 }
 
 body{
     background-color: #000000;
+    height: 100%;
 }
 
 .formulaire{ 
   
-  margin-top: 25px;
+  margin-top: 45px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   
       .formulaire__title, .formulaire__subtitle{
+        padding-bottom: 15px;
         text-align: center;
         color: white;
       }
@@ -51,9 +62,7 @@ body{
         font-size: 18px;
         background-color:transparent;
         border: solid 0.5px white;
-        height: 35px; 
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 10px 15px;
         cursor:pointer;
         
         &:focus ~ label, &:valid ~ label 		{
@@ -96,7 +105,7 @@ body{
         position: absolute;
         right: 16%;
         top: 50%;
-        transform: translateY(-70%);
+        transform: translateY(-50%);
         align-self: center;
         pointer-events: none;
       }
@@ -165,7 +174,15 @@ body{
     position: fixed;
     z-index: 2;
     filter: blur(4px);
-    pointer-events: none
+    pointer-events: none;
+
+    .head{
+      margin-top: 15px;
+      height:auto;
+      .head__main{
+        position: initial;
+      }
+    }
 }
 
 .blur-out {
@@ -180,7 +197,7 @@ body{
   transform:translate(-50%,-70%);
   font-size:24px;
   width:268px;
-  padding:35px 25px;
+  padding:45px 35px;
   border-radius:5px;
   
   background-color:#222222;
@@ -227,4 +244,21 @@ body{
  
 .none{
     display:none;
+ }
+
+ @media(min-width:1200px){
+   body{
+     .formulaire{
+       .group{
+          .formulaire__item{
+            padding: 15px 20px;
+            margin: 15px 15px 15px 12% ;
+          }
+
+          label{
+            transform:translateY(-30%)
+          }
+       }
+     }
+   }
  }
