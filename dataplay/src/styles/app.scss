@@ -38,8 +38,6 @@ body::-webkit-scrollbar-track {
     background: #ffffff00;
   }
 body::-webkit-scrollbar-thumb {
-    
-    border-color: #FF9900 1px;
+    background-color: #FF9900;
     border-radius: 12px;
-    overflow: auto;
   }
