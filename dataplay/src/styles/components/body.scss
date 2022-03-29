@@ -12,6 +12,7 @@
         &>img{
             margin: 0 auto;
             width: 80%;
+            max-height: 200px;
         }
         &::before{
             content: "X" ;
@@ -100,7 +101,8 @@
     }
     &__list{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         &--hori{
             flex-direction: row;
             width: 100vw;
@@ -115,6 +117,10 @@
 
     &__el{
         margin: 49px 0 0 0 ;
+        cursor: pointer;
+        max-width: 414px;
+        width: 100%;
+        min-width: 370px;
         &:nth-child(1){
             margin: 10px 0 0 0;
         }
@@ -127,6 +133,9 @@
             &:nth-child(1){
                 margin: 0px;
             }
+        }
+        &--pub{
+            display: none;
         }
     }
     /// les cartes des stats
@@ -158,6 +167,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        //cursor: pointer;
         &--none{
             display: none;
         }
@@ -168,7 +178,7 @@
         &>li:nth-child(1){
             padding: 0 0 0 8px;
             height: 120px;
-            width: 100%;
+            width: calc(100% - 207px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -225,3 +235,142 @@
         }
     }
 }
+
+// @media(min-width:600px){
+//     body{
+//         width: 414px;
+//         height: 780px;
+//         border: 6px solid red;
+//         overflow: hidden;
+//         overflow-y: scroll;
+//         position: relative;
+//     }
+    
+// }
+
+@media(min-width:600px){
+
+
+    .sect{
+
+        &__list{
+            width: calc(100% - 2vw);
+            padding: 0 1vw;
+            column-gap: 18px;
+            justify-content: center;
+
+            &--hori{
+                justify-content: start;
+                &>li{
+                    &:nth-child(1){
+                        margin: 0;
+                    }
+                }
+            }
+        }
+        &__el{
+            max-width: 300px;
+            &:nth-child(1){
+                margin: 49px 0 0 0;
+            }
+        }
+    }
+}
+
+
+@media(min-width:1000px){
+    .main{
+
+        &__pub{
+            display: none;
+            &--actif{
+                display: block;
+            }
+            &::before{
+                right: -380px;
+                cursor: pointer;
+            }
+
+            &--btn{
+                cursor: pointer;
+                right: -56px;
+                z-index: 11;
+    
+            }
+        }
+        &__sect{
+            margin: 100px 0;
+    
+            &--second{
+                margin: 118px 0;
+            }
+        }
+    }
+    .sect{
+        &__title{
+            margin: 0 0 0 17vw;
+    
+            &>span{
+                margin: 6px 0 0 18px;
+                position: relative;
+                top: 2px;
+            }
+            &--2{
+                margin: 0 0 18px 17vw;
+                
+            }
+        }
+        &__list{
+           width: 100%;
+           max-width: 1400px;
+            //width: calc(100% - 15vw);
+           // padding: 0 6.5vw;
+            column-gap: 52px;
+            justify-content: start;
+            margin: 0 auto;
+
+            &--hori{
+                justify-content: start;
+                padding: 0 0 21px 0;
+                scrollbar-width: thin;
+                scrollbar-color:  #FF9900;
+                &::-webkit-scrollbar {
+                    cursor: grab;
+                    width: 16px;
+                    height: 8px;
+                }
+                &::-webkit-scrollbar-track {
+                    background: #ffffff00;
+                  }
+                  &::-webkit-scrollbar-thumb {
+                    background-color: #FF990050 ;
+                    border-radius: 12px;
+                    border: 3px solid #ffffff00;
+                    
+                  }
+
+                &>li{
+                    cursor: help;
+                    &:nth-child(1){
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        &__el{
+            max-width: 400px;
+            &:nth-child(1){
+                margin: 49px 0 0 0;
+            }
+            &--pub{
+                display: block;
+
+                &>div{
+                    margin: 40px 0 0 0;
+                }
+            }
+        }
+    }
+}
+

@@ -21,7 +21,25 @@
     
 }
 
+
+body::-webkit-scrollbar {
+    width: 16px;
+    
+}
 body{
     background-color: #000000;
     width: 100%;
+    transition: 0.6s;
+    scrollbar-width: thin;
+    scrollbar-color:  #FF9900;
+    overflow-x: hidden;
 }
+body::-webkit-scrollbar-track {
+    background: #ffffff00;
+  }
+body::-webkit-scrollbar-thumb {
+    background-color: #FF990050 ;
+    border-radius: 12px;
+    border: 3px solid #ffffff00;
+    
+  }

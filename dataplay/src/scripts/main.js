@@ -66,35 +66,57 @@ btnMenu.addEventListener('click', () => {
 const tabAllPub = ["assets/images/Frame 2.png", "assets/images/pub2.png", "assets/images/pub3.png", "assets/images/pub4.png", "assets/images/pub5.png"];
 const tabDocumentaire = ["https://www.youtube.com/watch?v=hQZN1nSPL5k", "https://www.youtube.com/watch?v=IcwAMLcliIY", "https://www.youtube.com/watch?v=vR1jra31dkk"]
 const tabAllCreator = ["Mathis", "Jean", "Bastien", "Anto"];
-var imgPub = document.querySelector('.main__pubImg');
-var pubCreator = document.querySelector('.main__pubTxt');
-let imgPubLink = document.querySelector('.main__pubImg');
+var imgPub = document.querySelectorAll('.main__pubImg');
+var pubCreator = document.querySelectorAll('.main__pubTxt');
+let imgPubLink = document.querySelectorAll('.main__pubImg');
 let alphaRan = Random(0, 5);
-let btnPubClose = document.querySelector('.main__pub--btn');
+let btnPubClose = document.querySelectorAll('.main__pub--btn');
 let boxScreen = document.querySelectorAll('.sect__cardScreen');
-
+console.log(boxScreen);
 function Random(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-imgPub.src = tabAllPub[Random(0, tabAllPub.length)];
-pubCreator.innerHTML = "ADS BY " + tabAllCreator[Random(0, 3)];
-
-btnPubClose.addEventListener('click', () => {
-    imgPubLink.classList.add('main__pubImg--none');
-    if (alphaRan === 3) {
-        window.open("https://youtu.be/o-YBDTqX_ZU", '_blank')
-        //window.location.href="https://youtu.be/o-YBDTqX_ZU";
-    }
+imgPub.forEach(el => {
+    el.src = tabAllPub[Random(0, tabAllPub.length)];
 });
+pubCreator.forEach(el => {
+    el.innerHTML = "ADS BY " + tabAllCreator[Random(0, 3)];
+});
+btnPubClose.forEach(el => {
+    el.addEventListener('click', () => {
+        imgPubLink[0].classList.add('main__pubImg--none');
+        imgPubLink[1].classList.add('main__pubImg--none');
+        console.log('ta mere la chèvre');
+        if (alphaRan === 3) {
+            window.open("https://youtu.be/o-YBDTqX_ZU", '_blank')
+        }
+        i++;
+    });
+})
 
-
-imgPubLink.addEventListener('click', () => {
+imgPubLink[0].addEventListener('click', () => {
     window.open(tabDocumentaire[Random(0, 3)], '_blank')
-    //window.location.href="https://www.youtube.com/watch?v=IcwAMLcliIY";
 });
+imgPubLink[1].addEventListener('click', () => {
+    window.open(tabDocumentaire[Random(0, 3)], '_blank')
+});
+// imgPub.src = tabAllPub[Random(0, tabAllPub.length)];
+// pubCreator.innerHTML = "ADS BY " + tabAllCreator[Random(0, 3)];
+
+// btnPubClose.addEventListener('click', () => {
+//     imgPubLink.classList.add('main__pubImg--none');
+//     if (alphaRan === 3) {
+//         window.open("https://youtu.be/o-YBDTqX_ZU", '_blank')
+//         //window.location.href="https://youtu.be/o-YBDTqX_ZU";
+//     }
+// });
+
+// imgPubLink.addEventListener('click', () => {
+//     window.open(tabDocumentaire[Random(0, 3)], '_blank')
+//     //window.location.href="https://www.youtube.com/watch?v=IcwAMLcliIY";
+// });
 
 
 
@@ -137,38 +159,43 @@ fetch('assets/data/cul.json')
 
 
 cardList.forEach(el => {
-    let tabNameCard = ["Flash", "Utilisateur Tablette", "Consomateur", "Consomation", "Sexe(Oral/Anal)"];
-    let tabCatForm = ['temps', 'devices', 'age', 'categorie', 'sexe'];
-    let varControle = el.firstElementChild.children[0].children[0].children[0];
-    let indexNum = tabNameCard.indexOf(varControle.children[0].innerText);
-
-    if (el.classList.contains('sect__el--small')) {
-        i = 8;
+    if (el.id === 'pub') {
+        console.log('ta mere');
     } else {
-        phraseVignetteRecord(varControle, tabNameCard[indexNum], el);
-        el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem(tabCatForm[i]);
-        if (i === 5) {
-            i = 0;
-        } else if (i === 0) {
-            el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem(tabCatForm[i]) + 'min';
-            i++
-        } else if (i === 1) {
-            el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem('device');
-            i++
+        let tabNameCard = ["Flash", "Utilisateur Tablette", "Consomateur", "Consomation", "Sexe(Oral/Anal)"];
+        let tabCatForm = ['temps', 'devices', 'age', 'categorie', 'sexe'];
+        let varControle = el.firstElementChild.children[0].children[0].children[0];
+        let indexNum = tabNameCard.indexOf(varControle.children[0].innerText);
+
+        if (el.classList.contains('sect__el--small')) {
+            i = 8;
         } else {
-            i++
+            phraseVignetteRecord(varControle, tabNameCard[indexNum], el);
+            el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem(tabCatForm[i]);
+            if (i === 5) {
+                i = 0;
+            } else if (i === 0) {
+                el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem(tabCatForm[i]) + 'min';
+                i++
+            } else if (i === 1) {
+                el.firstElementChild.children[0].children[0].children[0].children[1].innerText = localStorage.getItem('device');
+                i++
+            } else {
+                i++
+            }
         }
+
+        el.addEventListener('click', () => {
+            let varControle = el.firstElementChild.children[0].children[0].children[0];
+            //console.log(el.firstElementChild.children[0].children[0].children[0].children[1].innerText);
+            //console.log(varControle.children[0].innerText);
+            let indexNum = tabNameCard.indexOf(varControle.children[0].innerText);
+            phraseVignetteRecord(varControle, tabNameCard[indexNum], el);
+            OpenGrafView(el);
+
+        });
     }
 
-    el.addEventListener('click', () => {
-        let varControle = el.firstElementChild.children[0].children[0].children[0];
-        //console.log(el.firstElementChild.children[0].children[0].children[0].children[1].innerText);
-        //console.log(varControle.children[0].innerText);
-        let indexNum = tabNameCard.indexOf(varControle.children[0].innerText);
-        phraseVignetteRecord(varControle, tabNameCard[indexNum], el);
-        OpenGrafView(el);
-
-    });
 });
 
 function graphDataSex(data) {
@@ -214,6 +241,13 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
             }
         }
         if (nomCarte === "Utilisateur Tablette") {
+            let docTab = document.querySelector('#txtGsmGo');
+
+            if (localStorage.getItem('device') === 'gsm') {
+                docTab.innerText = 'Un petit 5 contre 1, en solitaire ? '
+            } else if (localStorage.getItem('device') === 'pc') {
+                docTab.innerText = 'Une expérience en 4k fullHD en vr avec un home cinéma ?  '
+            }
             console.log('Rend largent');
         }
         if (nomCarte === "Consomateur") {
@@ -250,37 +284,38 @@ function calcWidthDevice(dataCu) {
     let listDevice = document.querySelectorAll('.card__dataSpan--device ');
     let listAllLiDevice = document.querySelectorAll('.card__dataEl--device');
     let txtDeviceAll = document.querySelector('#resumDevice');
+    console.log(listAllLiDevice);
     let i = 0;
     listDevice.forEach(el => {
         if (i == 0) {
             el.innerText = dataCu.tablet;
             listAllLiDevice[i].style.width = 120 + parseInt(dataCu.tablet) + "px";
             listAllLiDevice[i].style.height = 120 + parseInt(dataCu.tablet) + "px";
-            
-       
+
+
             i++
         } else if (i === 1) {
             el.innerText = dataCu.gsm;
             listAllLiDevice[i].style.width = 120 + parseInt(dataCu.gsm) + "px";
             listAllLiDevice[i].style.height = 120 + parseInt(dataCu.gsm) + "px";
-           
+
             i++
         } else {
             el.innerText = dataCu.pc;
             listAllLiDevice[i].style.width = 120 + parseInt(dataCu.pc) + "px";
             listAllLiDevice[i].style.height = 120 + parseInt(dataCu.pc) + "px";
-           
+
             i = 0;
         }
 
-        if(localStorage.getItem('device')==='tablet'){
-            txtDeviceAll.innerText=dataCu.tablet;
+        if (localStorage.getItem('device') === 'tablet') {
+            txtDeviceAll.innerText = dataCu.tablet;
             listAllLiDevice[0].classList.add('card__dataEl--checkBox');
-        }else if(localStorage.getItem('device')==='gsm'){
-            txtDeviceAll.innerText=dataCu.gsm;
+        } else if (localStorage.getItem('device') === 'gsm') {
+            txtDeviceAll.innerText = dataCu.gsm;
             listAllLiDevice[1].classList.add('card__dataEl--checkBox');
-        }else{
-            txtDeviceAll.innerText=dataCu.pc;
+        } else {
+            txtDeviceAll.innerText = dataCu.pc;
             listAllLiDevice[2].classList.add('card__dataEl--checkBox');
         }
     });
@@ -341,6 +376,8 @@ function graphAgeComparatif(dataTabAge) {
     }
 }
 
+
+
 function OpenGrafView(el) {
 
 
@@ -374,6 +411,7 @@ function OpenGrafView(el) {
         }
     }
     if (el.id === "listAge") {
+        console.log('puuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
         if (dataGraph[2].classList.contains('card__dataList--actif')) {
             console.log('femmmme');
             dataGraph[2].classList.remove('card__dataList--actif');
@@ -385,6 +423,9 @@ function OpenGrafView(el) {
             boxScreen[2].classList.add('sect__cardScreen--open2');
             sectCardInfo[2].classList.add('sect__listCard--none');
         }
+    }
+    if (el.id === 'pub') {
+        console.log('merte');
     }
     if (el.id === "listDivice") {
         if (dataGraph[1].classList.contains('card__dataList--actif')) {

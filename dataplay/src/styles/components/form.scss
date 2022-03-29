@@ -1,10 +1,12 @@
 @keyframes blur-out {
     0% {
         filter: blur(4px);
+        pointer-events: none;
     }
 
     100% {
         filter: blur(0px);
+        pointer-events: auto;
     }
 }
 
@@ -15,6 +17,9 @@ body{
 .formulaire{ 
   
   margin-top: 25px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
   
       .formulaire__title, .formulaire__subtitle{
         text-align: center;
@@ -29,7 +34,7 @@ body{
         label{
       position:absolute;
       pointer-events:none;
-      left:3%;
+      left:15px;
       top:50%;
       transform:translate(0%, -50%);
       transition:0.2s ease all; 
@@ -44,14 +49,15 @@ body{
         margin: 10px;
         margin-left: 12%;
         font-size: 18px;
-        background:none;
+        background-color:transparent;
         border: solid 0.5px white;
         height: 35px; 
-        padding-left: 3%;
+        padding-left: 10px;
+        padding-right: 10px;
+        cursor:pointer;
         
         &:focus ~ label, &:valid ~ label 		{
           top:5px;
-          left:2%;
           font-size:16px;
           color:#ff9900;
           background-color:black;
@@ -65,15 +71,43 @@ body{
             color: #777777;
           }
         }
-    }
+    }   
   }
-
 }
 
-.formulaire__sexe{
-  margin-left:12%;
-  
-    input{
+.formulaire__select{
+  select{
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    }
+        
+      &:after{
+        content: '\25BC';
+        font-family: FontAwesome;
+        height: 15px ;
+        padding-left: 15px;
+        padding-bottom: 5px;
+        color: #ff9900;
+        display: inline-block;
+        position: absolute;
+        right: 16%;
+        top: 50%;
+        transform: translateY(-70%);
+        align-self: center;
+        pointer-events: none;
+      }
+
+}
+    
+
+  .formulaire__sexe{
+    margin-left:12%;
+    
+      input{
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -84,14 +118,18 @@ body{
 
     border: 2px solid #999;
     transition: 0.2s all linear;
-    margin-right: 5px;
 
     position: relative;
+    margin-left: 10px;
     top: 4px;
   }
 
   input:checked {
     border: 6px solid #ff9900;
+  }
+
+  .sex,label{
+    cursor: pointer;
   }
 }
 
@@ -127,6 +165,7 @@ body{
     position: fixed;
     z-index: 2;
     filter: blur(4px);
+    pointer-events: none
 }
 
 .blur-out {
