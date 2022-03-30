@@ -4,6 +4,11 @@ main{
     position: relative;
 }
 
+.logo__header{
+    margin: 30px;
+    position: absolute;
+}
+
 .box{
     font-size: 40px;
     font-family: arial;
@@ -26,6 +31,16 @@ main{
     align-items: center;
     justify-content:center;
     font-weight: bold;
+}
+
+.svg__chose{
+    position: absolute;
+    width: 80%;
+    min-height: 320px;
+    max-width: 800px;
+    stroke-width: 1px;
+    margin-top: -350px;
+    margin-left: 50px;
 }
 
 .box__svg{
