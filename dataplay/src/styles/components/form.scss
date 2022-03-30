@@ -12,16 +12,11 @@
     }
 }
 
-html{
-  height: 100%;
-  margin: auto;
-  width: 100%;
-  overflow: hidden;
-}
 
-body{
+.forms{
     background-color: #000000;
-    height: 100%;
+    height:100%;
+    margin-bottom: 150px;
 }
 
 .formulaire{ 
@@ -63,6 +58,7 @@ body{
         background-color:transparent;
         border: solid 0.5px white;
         padding: 10px 15px;
+        border-radius: 8px;
         cursor:pointer;
         
         &:focus ~ label, &:valid ~ label 		{
@@ -255,10 +251,17 @@ body{
             margin: 15px 15px 15px 12% ;
           }
 
+
+
           label{
             transform:translateY(-30%)
           }
        }
      }
+
+    .popup{
+      padding: 45px 55px;
+      width: 450px;
+      }
    }
  }

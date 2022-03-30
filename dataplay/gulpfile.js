@@ -76,6 +76,7 @@ const watchFiles = (done) => {
         "./src/assets/images/**/*.jpg",
         "./src/assets/images/**/*.png",
         "./src/assets/images/**/*.gif",
+        "./src/assets/images/**/*.mp4",
         "./src/assets/images/**/*.svg"
     ], compressImages);
     gulp.watch("./src/*.html", gulp.series(html, browserReload));

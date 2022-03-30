@@ -18,11 +18,17 @@ body{
       font-size: 20px;
   }
   
+  .footer__listBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .footer__list {
       list-style: none;
       margin: 0 0 30px 0;
       display: flex;
-      padding: 0px;
+      flex-direction: row;
+      justify-content: center;
   }
   
   .footer__item {
@@ -43,23 +49,52 @@ body{
 
   .footer--copyright {
     margin-bottom: 20px;
+    text-align: center;
   }
 
-  .dwm {
+  .footer__dwm {
       width: 100px;
       display: inline-block;
-      overflow: hidden;
-    position: relative;
+
+    //   overflow: hidden;
+    // position: relative;
   
   }
+.footer__listLink{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px 0 0 0 ;
+  width: 100%;
+}
+
+.footer__elLink{
+ 
+
+  &:nth-child(4){
+    &::after{
+      display: none;
+    }
+  }
+  &>a{
+    border-bottom: 1px solid #FF9900;
+    transition: 0.3s;
+    padding: 6px 18px;
+
+    
+    &:hover{
+      border-top: 1px solid #FF9900;
+      border-bottom: 0px solid #000;
+      transition: 0.4s;
+      color: #FF9900;
+    }
+  }
+}
 
   .section--footer {
     margin-top: 120px;
     padding-top: 5px;
     padding-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     border-top: 2px solid #FF9900;
   }
   
@@ -68,18 +103,51 @@ body{
     .footer__item {
       padding: 0 50px;
     }
-  
-    @media only screen and (min-width: 990px) {
-      body{
-        max-width: 100%;
-      }
-      .dwm {
-        width: 100px;
-        display: inline-block;
-        overflow: hidden;
+    .footer__elLink{
+      &::after{
+        content: "" ;
+        display: block;
+        width: 1px;
+        height: 24px;
+        background-color: #FF9900; 
         position: relative;
-        margin-top: -120px;
-        margin-right: 1000px;
+        top: -19px;
+        left: 137px;
+    
+      }
+      &:nth-child(4){
+        &::after{
+          display: none;
+        }
+      }
       }
     }
-  }
+  
+    @media only screen and (min-width: 990px) {
+      .footer__listBox{
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer__dwm {
+        width: 100px;
+        position: relative;
+      }
+      .footer__listLink{
+        width: 80%;
+        margin: 40px 0 0 0 ;
+      }
+      .footer__elLink{
+        &::after{
+          left: 153px;
+      
+        }
+        &:nth-child(4){
+          &::after{
+            display: none;
+          }
+        }
+        }
+      }
+    
+  
