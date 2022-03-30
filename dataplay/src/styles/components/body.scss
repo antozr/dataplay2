@@ -151,16 +151,19 @@
         }
         &--open1{
             height: 400px;
+            padding: 42px 8px;
             
             transition: 0.3s;
         }
         &--open2{
             height: 800px;
             transition: 0.3s;
+            padding: 42px 8px;
         }
         &--open3{
             height: 600px;
             transition: 0.3s;
+            padding: 42px 8px;
         }
     }
     &__listCard{

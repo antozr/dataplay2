@@ -208,7 +208,10 @@ function graphDataSex(data) {
     if (localStorage.getItem('sexe') === "homme") {
         document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.male;
         document.querySelector('#sexHom').parentElement.parentElement.classList.add('card__dataEl--checkBox');
-    } else {
+    }else if (localStorage.getItem('sexe') === "helico"){
+        document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.female;
+        document.querySelector('#sexFemme').parentElement.parentElement.classList.add('card__dataEl--checkBox');
+    }else {
         document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.female;
         document.querySelector('#sexFemme').parentElement.parentElement.classList.add('card__dataEl--checkBox');
     }
@@ -229,14 +232,14 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
             // console.log(valueSport2);
             if (valueSport2 < 10) {
                 varControle.children[2].innerText = "Tu es présser mon petit";
-                idBoxTextTemp.innerText = 'est  plus rapide que la moyen Belge';
+                idBoxTextTemp.innerText = 'est plus rapide que la moyen Belge 🍟🧇🍻';
             } else if (valueSport2 > 20) {
                 varControle.children[2].innerText = "Calme toi frère";
-                idBoxTextTemp.innerText = ' fais sauter touuuuuuut les records';
+                idBoxTextTemp.innerText = ' fais sauter touuuuuuut les records 😲';
 
             } else {
                 varControle.children[2].innerText = " Tu es un gros sportif";
-                idBoxTextTemp.innerText = 'est  proche de la moyen, on est fier de toi';
+                idBoxTextTemp.innerText = 'est  proche de la moyen, on est fier de toi 😄';
                 // console.log('gros boulet au cheville');
             }
         }
@@ -247,8 +250,12 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
                 docTab.innerText = 'Un petit 5 contre 1, en solitaire ? '
             } else if (localStorage.getItem('device') === 'pc') {
                 docTab.innerText = 'Une expérience en 4k fullHD en vr avec un home cinéma ?  '
+            }else if (localStorage.getItem('device') === 'tablette') {
+                docTab.innerText = 'Entre confort et mobilité, la solution parfaite ?  '
+            }else if (localStorage.getItem('device') === 'aucun') {
+                docTab.innerText = 'Ha bon vraiment ???  '
             }
-            console.log('Rend largent');
+            
         }
         if (nomCarte === "Consomateur") {
             console.log('Rend la vielle');
@@ -257,6 +264,8 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
             console.log('HA');
             if (localStorage.getItem('categorie') === 'Doule pénétration') {
                 varControle.children[2].innerText = "Tu connais le 18 trous au golf? ";
+            }else  if (localStorage.getItem('categorie') === 'Rien') {
+                varControle.children[2].innerText = "Tu ne serais pas un seins ? ";
             }
             // let valueCat = localStorage.getItem('categorie');
             // let allElLiCat = document.querySelectorAll('.card__dataEl--cat');
