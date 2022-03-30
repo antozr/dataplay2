@@ -156,6 +156,39 @@ main{
         
 }
 
+.box__boutonVideo{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-top: 270px;
+    display: flex;
+}
+
+.bouton{
+    width: 320px;
+    height: 70px;
+    border-radius: 20px;
+    margin: 0  30px 30px;
+
+    &__mamy{
+        background-color: #242424;
+    }
+
+    &__image{
+        width: 320px;
+        position: relative;
+        transform:translateY(-188px);
+    }
+
+    &__link{
+        background-color: #FF9900;
+        font-weight: bold;
+        font-size: 25px;
+        padding-top: 25px;
+    }
+}
+
 .box__images{
     display: flex;
     flex-wrap: wrap;
