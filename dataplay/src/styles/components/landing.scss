@@ -4,6 +4,11 @@ main{
     position: relative;
 }
 
+.logo__header{
+    margin: 30px;
+    position: absolute;
+}
+
 .box{
     font-size: 40px;
     font-family: arial;
@@ -28,19 +33,31 @@ main{
     font-weight: bold;
 }
 
+.svg__chose{
+    position: absolute;
+    width: 80%;
+    min-height: 320px;
+    max-width: 800px;
+    stroke-width: 1px;
+    margin-top: -350px;
+    margin-left: 50px;
+}
+
 .box__svg{
     height: 300px;
     stroke: #FF9900;
     stroke-width: 3px;
-    top: 17.5vh;
+    margin-top: 6px;
+    transform: translateX(25px);
     position: absolute;
-    width: 800px;
-    height: 600px;
+    width: 90px;
     
     &--img{
         height: 500px;
         top: 350px;
         width: 80%;
+        max-width: 800px;
+        stroke-width: 1px;
     }
 }
 
@@ -83,7 +100,8 @@ main{
     &__txt{
         font-size: 30px;
         margin-left: 8rem;
-        margin-top: 120px;
+        margin-top: 100px;
+        line-height: 110%;
     }
 
     &__catego{
@@ -107,13 +125,12 @@ main{
     font-size: 25px;
     margin-left: 8rem;
     line-height: 140%;
-    margin-top: 60px;
+    margin-top: 40px;
     width: 80%;
 }
 
 .style__video{
     width: 100%;
-    height: 600px;
     margin-top: 50px;
 }
 
@@ -123,7 +140,7 @@ main{
     position: absolute;
     width: 100px;
     fill: none;
-    top: 40rem;
+    margin-top: 480px;
 }
 
 .style{
@@ -156,6 +173,67 @@ main{
         
 }
 
+.box__boutonVideo{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-top: 250px;
+    display: flex;
+}
+
+.bouton{
+    width: 320px;
+    height: 70px;
+    border-radius: 20px;
+    margin: 0  30px;
+
+    &__mamy{
+        background-color: #242424;
+        margin-top: 30px;
+    }
+
+    &__image{
+        width: 320px;
+        position: relative;
+        transform:translateY(-188px);
+    }
+
+    &__link{
+        background-color: #FF9900;
+        font-weight: bold;
+        font-size: 25px;
+        padding-top: 25px;
+        margin-top: 30px;
+    }
+}
+
+.bouton{
+    width: 320px;
+    height: 70px;
+    border-radius: 20px;
+    margin: 0  30px;
+
+    &__mamy{
+        background-color: #242424;
+        margin-top: 30px;
+    }
+
+    &__image{
+        width: 320px;
+        position: relative;
+        transform:translateY(-188px);
+    }
+
+    &__link{
+        background-color: #FF9900;
+        font-weight: bold;
+        font-size: 25px;
+        padding-top: 25px;
+        margin-top: 30px;
+    }
+}
+
 .box__images{
     display: flex;
     flex-wrap: wrap;
@@ -167,4 +245,79 @@ main{
 .box__images>img{
     margin: 30px 15px;
     height: 200px;
+}
+
+
+@media (max-width: 750px){
+    .txt__video{
+        font-size: 20px;
+        margin-left: 4rem;
+        line-height: 140%;
+        margin-top: 30px;
+        width: 80%;
+    }
+
+    .title__txt{
+        margin-left: 4rem;
+        margin-top: 100px;
+    }
+
+    .title__catego{
+        margin-left: 4rem;
+        margin-top: 100px;
+    }
+
+    .style__ul{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    
+    .style__ul{
+        margin: 30px 15px;
+    }
+}
+
+
+@media (max-width: 380px){
+
+    .box__boutonVideo{
+        margin-top: 180px;
+    }
+
+    .bouton{
+        width: 200px;
+        height: 40px;
+        border-radius: 10px;
+    
+        &__image{
+            width: 200px;
+            transform:translateY(-120px);
+        }
+    
+        &__link{
+            font-size: 15px;
+            padding-top: 10px;
+            margin-top: 30px;
+        }
+    }
+
+    .txt__video{
+        font-size: 18px;
+        margin-left: 2.5rem;
+    }
+
+    .title__txt{
+        margin-left: 2.5rem;
+        margin-top: 80px;
+    }
+
+    .title__catego{
+        margin-left: 2.5rem;
+        margin-top: 80px;
+    }
+
+    .style__ul{
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
