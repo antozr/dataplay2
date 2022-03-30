@@ -68,7 +68,7 @@ main{
         font-size: 40px;
     }
 
-    &__video>p{
+    &__video--write{
         border-right: .05em solid #FF9900;
         white-space: nowrap;
         margin: 0 auto;
@@ -114,7 +114,6 @@ main{
 .style__video{
     width: 100%;
     height: 600px;
-    background-color: red;
     margin-top: 50px;
 }
 
