@@ -8,6 +8,7 @@ if (submit) {
 }
 
 function activate() {
+     window.location.href = 'stat.html'
     var x = document.querySelector('input[name="sexe"]:checked');
 
     var reponse = document.querySelectorAll(".formulaire__item:not(:last-child)");
@@ -209,7 +210,7 @@ function graphDataSex(data) {
         document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.male;
         document.querySelector('#sexHom').parentElement.parentElement.classList.add('card__dataEl--checkBox');
     }else if (localStorage.getItem('sexe') === "helico"){
-        document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.female;
+        document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.female+ " 🚁";
         document.querySelector('#sexFemme').parentElement.parentElement.classList.add('card__dataEl--checkBox');
     }else {
         document.querySelector('#numPourcentageUtil').innerHTML = data[2].DataBE[0].visitorSexBE.female;
@@ -243,7 +244,7 @@ function phraseVignetteRecord(varControle, nomCarte, el) {
                 // console.log('gros boulet au cheville');
             }
         }
-        if (nomCarte === "Utilisateur Tablette") {
+        if (nomCarte === "Utilisateur") {
             let docTab = document.querySelector('#txtGsmGo');
 
             if (localStorage.getItem('device') === 'gsm') {
